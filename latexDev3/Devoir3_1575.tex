@@ -671,6 +671,7 @@ $$\pi=\begin{pmatrix}
 
 
 \section*{Question 4}
+
 \begin{center}
 \begin{tikzpicture}[node distance=1.3cm,auto]
     %center the state at the top ceanter of the page
@@ -687,19 +688,23 @@ $$\pi=\begin{pmatrix}
     \node[state] (11) [below = of  10] {11};
     \node[state] (12) [below = of  11] {12};
 
-    \draw[->] (1) edge node[left] {A} (2);
-    \draw[->] (1) edge node[right] {2} (2);
+    \draw[->,color=red] (1) edge[color=red] node[left,color=black] {A} (2);
+    \draw[->,color=red] (1) edge[color=red] node[right,color=black] {2} (2);
 
     \draw[->] (2) edge node[left] {B} (3);
     \draw[->] (2) edge node[right] {14} (3);
 
     % 2 to 4
-    \draw[->] (2) edge node[left] {C} (4);
-    \draw[->] (2) edge node[right] {14} (4);
+    \draw[->,color=red] (2) edge[color=red] node[left,color=black] {C} (4);
+    \draw[->,color=red] (2) edge[color=red] node[right,color=black] {14} (4);
 
-    % 4 to 5
-    \draw[->] (4) edge node[left] {D} (5);
-    \draw[->] (4) edge node[right] {3} (5);
+    % 3 to 4 dashed 
+    \draw[->,dashed] (3) edge node[left] {} (4);
+    \draw[->,dashed] (3) edge node[right] {} (4);
+
+    % 4 to 5 red
+    \draw[->,color=red] (4) edge[color=red] node[left,color=black] {D} (5);
+    \draw[->,color=red] (4) edge[color=red] node[right,color=black] {3} (5);
 
     % 5 to 6
     \draw[->] (5) edge node[left] {F} (6);
@@ -713,9 +718,9 @@ $$\pi=\begin{pmatrix}
     \draw[->] (6) edge node[left] {G} (9);
     \draw[->] (6) edge node[right] {1} (9);
 
-    % 5 to 9 
-    \draw[->] (5) edge node[left] {E} (9);
-    \draw[->] (5) edge node[right] {70} (9);
+    % 5 to 9 red
+    \draw[->,color=red] (5) edge[color=red] node[left,color=black] {E} (9);
+    \draw[->,color=red] (5) edge[color=red] node[right,color=black] {70} (9);
 
     % 5 to 10 
     \draw[->] (5) edge[bend right, out = 300 , in=240] node[left] {H} (10);
@@ -733,20 +738,101 @@ $$\pi=\begin{pmatrix}
     \draw[->] (8) edge node[left] {L} (9);
     \draw[->] (8) edge node[right] {1} (9);
 
-    % 9 to 10
-    \draw[->] (9) edge node[left] {M} (10);
-    \draw[->] (9) edge node[right] {1} (10);
+    % 9 to 10 red
+    \draw[->,color=red] (9) edge[color=red] node[left,color=black] {M} (10);
+    \draw[->,color=red] (9) edge[color=red] node[right,color=black] {1} (10);
 
-    % 10 to 11
-    \draw[->] (10) edge node[left] {N} (11);
-    \draw[->] (10) edge node[right] {1} (11);
+    % 10 to 11 red
+    \draw[->,color=red] (10) edge[color=red] node[left,color=black] {N} (11);
+    \draw[->,color=red] (10) edge[color=red] node[right,color=black] {1} (11);
 
-    % 11 to 12
-    \draw[->] (11) edge node[left] {O} (12);
-    \draw[->] (11) edge node[right] {1} (12);
-
+    % 11 to 12 red
+    \draw[->,color=red] (11) edge[color=red] node[left,color=black] {O} (12);
+    \draw[->,color=red] (11) edge[color=red] node[right,color=black] {1} (12);
 \end {tikzpicture}
 \end{center}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.3cm,auto]
+    %center the state at the top ceanter of the page
+    \node[state] (1) {1};
+    \node[state] (2) [below= of 1] {2};
+    \node[state] (3) [below left = of 2] {3};
+    \node[state] (4) [below right = of 2] {4};
+    \node[state] (5) [below = of 4] {5};
+    \node[state] (6) [below = of 5] {6};
+    \node[state] (7) [right = of  5] {7};
+    \node[state] (8) [below = of  7] {8};
+    \node[state] (9) [below = of  8] {9};
+    \node[state] (10) [below = of  9] {10};
+    \node[state] (11) [below = of  10] {11};
+    \node[state] (12) [below = of  11] {12};
+
+    \draw[->,color=blue] (1) edge[color=blue] node[left,color=black] {A} (2);
+    \draw[->,color=blue] (1) edge[color=blue] node[right,color=black] {2} (2);
+
+    % 2 to 3 color blue
+    \draw[->,color=blue] (2) edge[color=blue] node[left,color=black] {B} (3);
+    \draw[->,color=blue] (2) edge[color=blue] node[right,color=black] {14} (3);
+
+    % 2 to 4
+    \draw[->] (2) edge node[left,color=black] {C} (4);
+    \draw[->] (2) edge node[right,color=black] {14} (4);
+
+    % 3 to 4 dashed 
+    \draw[->,dashed,color=blue] (3) edge[color=blue] node[left,color=black] {} (4);
+    \draw[->,dashed,color=blue] (3) edge[color=blue] node[right,color=black] {} (4);
+
+    % 4 to 5 blue 
+    \draw[->,color=blue] (4) edge[color=blue] node[left,color=black] {D} (5);
+    \draw[->,color=blue] (4) edge[color=blue] node[right,color=black] {3} (5);
+
+    % 5 to 6
+    \draw[->] (5) edge node[left] {F} (6);
+    \draw[->] (5) edge node[right] {14} (6);
+
+    % 5 to 7
+    \draw[->] (5) edge node[above] {J} (7);
+    \draw[->] (5) edge node[below] {7} (7);
+
+    % 6 to 9 
+    \draw[->] (6) edge node[left] {G} (9);
+    \draw[->] (6) edge node[right] {1} (9);
+
+    % 5 to 9 blue
+    \draw[->,color=blue] (5) edge[color=blue] node[left,color=black] {E} (9);
+    \draw[->,color=blue] (5) edge[color=blue] node[right,color=black] {70} (9);
+
+    % 5 to 10 
+    \draw[->] (5) edge[bend right, out = 300 , in=240] node[left] {H} (10);
+    \draw[->] (5) edge[bend right, out = 300 , in=240] node[right] {1} (10);
+
+    % 5 to 11
+    \draw[->] (5) edge[bend right , out=270 , in=270] node[left] {I} (11);
+    \draw[->] (5) edge[bend right , out=270 , in=270] node[right] {7} (11);
+
+    % 7 to 8
+    \draw[->] (7) edge node[left] {K} (8);
+    \draw[->] (7) edge node[right] {14} (8);
+
+    % 8 to 9
+    \draw[->] (8) edge node[left] {L} (9);
+    \draw[->] (8) edge node[right] {1} (9);
+
+    % 9 to 10 blue
+    \draw[->,color=blue] (9) edge[color=blue] node[left,color=black] {M} (10);
+    \draw[->,color=blue] (9) edge[color=blue] node[right,color=black] {1} (10);
+
+    % 10 to 11 blue
+    \draw[->,color=blue] (10) edge[color=blue] node[left,color=black] {N} (11);
+    \draw[->,color=blue] (10) edge[color=blue] node[right,color=black] {1} (11);
+
+    % 11 to 12 blue
+    \draw[->,color=blue] (11) edge[color=blue] node[left,color=black] {O} (12);
+    \draw[->,color=blue] (11) edge[color=blue] node[right,color=black] {1} (12);
+\end {tikzpicture}
+\end{center}
+
 
 \begin{center}
 \begin{table}[]

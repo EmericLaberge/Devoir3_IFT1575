@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.3.23)  26 MAR 2023 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.3.23)  26 MAR 2023 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -989,20 +989,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 642--644
 
  []
 
-[9] [10]
+[9] [10] [11]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 752.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 785.
+               Default added (so using `tbp') on input line 838.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 817.
+               Default added (so using `tbp') on input line 871.
 
-[11] [12] [13] (./Devoir3_1575.aux)
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 903.
+
+[12] [13] [14] (./Devoir3_1575.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1010,7 +1010,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  26982 strings out of 476025
  698090 string characters out of 5790017
- 1885388 words of memory out of 5000000
+ 1889388 words of memory out of 5000000
  46967 multiletter control sequences out of 15000+600000
  520977 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1030,10 +1030,10 @@ texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texliv
 e/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Devoir3_1575.pdf (14 pages, 208397 bytes).
+Output written on Devoir3_1575.pdf (15 pages, 211751 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 133 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
