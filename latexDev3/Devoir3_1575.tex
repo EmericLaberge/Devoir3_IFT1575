@@ -666,12 +666,125 @@ $$\pi=\begin{pmatrix}
 \end{itemize}
 
 \textbf{Coût total} = 1180 + 665 + 890 + 820 = 3555
+\clearpage
 
 
 
 
 \section*{Question 4}
+\begin{table}
+\caption{Temps le plus tard} \label{tab:Temps le plus tard}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Étape i & $j \in p_i$ & $LT_j-t_{ij}$ & $LT_i$ \\
+            \hline
+            12       & -           & -             & 92     \\
+            11       & 12          & 92-1          & 91     \\
+            10       & 11          & 91-1          & 90     \\
+            9        & 10          & 90-1          & 89     \\
+            8        & 9           & 89-1          & 88     \\
+            7        & 8           & 88-14         & 74     \\
+            6        & 9           & 89-1          & 88     \\
+            5        & 6           & 88-14         &        \\
+                     & 7           & 74-7          &        \\
+                     & 9           & 89-70         & 19     \\
+                     & 10          & 90-1          &        \\
+                     & 11          & 91-7          &        \\
+            
+            4        & 5           & 19-3          & 16     \\
+            3        & 4           & 16-0          & 16     \\
+            2        & 3           & 16-14         & 2      \\
+            2        & 4           & 16-14         &        \\
+            1        & 2           & 2-2           & 0      \\
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+        \end{center}
+\end{table}
 
+\begin{table}
+    \caption{Temps le plus tôt} \label{tab:Temps le plus tot}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Étape i & $j \in B_i$ & $ET_j+t_{ji}$ & $ET_i$ \\
+            \hline
+            1        & -           & -             & 0      \\
+            2        & 1          & 0+12          & 2      \\
+            3        & 2          & 2+14          & 16     \\
+            4        & 2          & 2+14          & 16     \\
+                     & 3          & 2+0           &        \\
+            5        & 4           & 16+3          & 19     \\
+            6        & 5           & 19+14         & 33     \\
+            7        & 5           & 19+7          & 26     \\
+            8        & 7           & 26 +14        & 40     \\
+            9        & 5           & 19+70         & 89     \\
+                     & 6          & 33+1          &        \\
+                     & 8          & 40+1          &        \\
+            10       & 5           & 19+1          & 90     \\
+                     & 9           & 89+1          &        \\
+            11       & 5           & 19+7          & 91     \\
+                     & 10           & 90+1          &        \\
+            12       & 11           & 91+1          & 92     \\
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[]
+    \caption{Écarts} \label{tab:ecarts}
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+           \hline
+           Tâches & $LT_j-(ET_i+t_{ij})$ & Écart \\
+           \hline 
+           (1,2) & $2-(0+2)$ & 0 \\
+
+           (2,3) & $16-(2+14)$ & 0 \\
+
+           (2,4) & $16-(2+14)$ & 0 \\
+
+           (3,4) & $16-(16+0)$ & 0 \\
+
+           (4,5) & $19-(16+3)$ & 0 \\
+
+           (5,6) & $88-(19+14)$ & 55 \\
+           
+           (5,7) & $76-(19+7)$ & 48 \\
+           
+           (5,9) & $89-(19+70)$ & 0 \\
+           
+           (5,10) & $90-(19+1)$ & 70 \\
+
+           
+           (5,11) & $91-(19+7)$ & 65 \\
+
+           (6,9) & $89-(33+1)$ & 55 \\
+           
+           (7,8) & $88 - (26 + 14)$ & 48 \\
+           
+           (8,9) & $89-(40+1)$ & 48 \\
+           
+           (9,10) & $90-(89+1)$ & 0 \\
+           
+           (10,11) & $91 - (90 + 1)$ & 0 \\
+           
+           (11,12) & $92-(91+1)$ & 0 \\
+
+
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+    \end{center}
+\end{table}
 \begin{center}
 \begin{tikzpicture}[node distance=1.3cm,auto]
     %center the state at the top ceanter of the page
@@ -779,11 +892,10 @@ $$\pi=\begin{pmatrix}
     \draw[->] (2) edge node[left,color=black] {C} (4);
     \draw[->] (2) edge node[right,color=black] {14} (4);
 
-    % 3 to 4 dashed 
-    \draw[->,dashed,color=blue] (3) edge[color=blue] node[left,color=black] {} (4);
-    \draw[->,dashed,color=blue] (3) edge[color=blue] node[right,color=black] {} (4);
+    % 3 to 4 dashed blue
+    \draw[->,dashed,color=blue] (3) edge[color=blue] node[left,color=blue] {} (4);
 
-    % 4 to 5 blue 
+    % 4 to 5 blue
     \draw[->,color=blue] (4) edge[color=blue] node[left,color=black] {D} (5);
     \draw[->,color=blue] (4) edge[color=blue] node[right,color=black] {3} (5);
 
@@ -832,122 +944,4 @@ $$\pi=\begin{pmatrix}
     \draw[->,color=blue] (11) edge[color=blue] node[right,color=black] {1} (12);
 \end {tikzpicture}
 \end{center}
-
-
-\begin{center}
-\begin{table}[]
-\caption{Temps le plus tard} \label{tab:Temps le plus tard}
-    \begin{center}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            Étape i & $j \in p_i$ & $LT_j-t_{ij}$ & $LT_i$ \\
-            \hline
-            12       & -           & -             & 92     \\
-            11       & 12          & 92-1          & 91     \\
-            10       & 11          & 91-1          & 90     \\
-            9        & 10          & 90-1          & 89     \\
-            8        & 9           & 89-1          & 88     \\
-            7        & 8           & 88-14         & 74     \\
-            6        & 9           & 89-1          & 88     \\
-            5        & 6           & 88-14         &        \\
-                     & 7           & 74-7          &        \\
-                     & 9           & 89-70         & 19     \\
-                     & 10          & 90-1          &        \\
-                     & 11          & 91-7          &        \\
-            
-            4        & 5           & 19-3          & 16     \\
-            3        & 4           & 16-0          & 16     \\
-            2        & 3           & 16-14         & 2      \\
-            2        & 4           & 16-14         &        \\
-            1        & 2           & 2-2           & 0      \\
-            \hline
-                                                     
-                        
-                                        
-        \end{tabular}
-    \end{center}
-\end{table}
-
-\begin{table}[]
-    \caption{Temps le plus tôt} \label{tab:Temps le plus tard}
-    \begin{center}
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            Étape i & $j \in B_i$ & $ET_j+t_{ji}$ & $ET_i$ \\
-            \hline
-            1        & -           & -             & 0      \\
-            2        & 1          & 0+12          & 2      \\
-            3        & 2          & 2+14          & 16     \\
-            4        & 2          & 2+14          & 16     \\
-                     & 3          & 2+0           &        \\
-            5        & 4           & 16+3          & 19     \\
-            6        & 5           & 19+14         & 33     \\
-            7        & 5           & 19+7          & 26     \\
-            8        & 7           & 26 +14        & 40     \\
-            9        & 5           & 19+70         & 89     \\
-                     & 6          & 33+1          &        \\
-                     & 8          & 40+1          &        \\
-            10       & 5           & 19+1          & 90     \\
-                     & 9           & 89+1          &        \\
-            11       & 5           & 19+7          & 91     \\
-                     & 10           & 90+1          &        \\
-            12       & 11           & 91+1          & 92     \\
-            \hline
-                                                     
-                        
-                                        
-        \end{tabular}
-    \end{center}
-\end{table}
-
-\begin{table}[]
-    \caption{Écarts} \label{tab:Temps le plus tard}
-    \begin{center}
-        \begin{tabular}{|c|c|c|}
-           \hline
-           Tâches & $LT_j-(ET_i+t_{ij})$ & Écart \\
-           \hline 
-           (1,2) & $2-(0+2)$ & 0 \\
-
-           (2,3) & $16-(2+14)$ & 0 \\
-
-           (2,4) & $16-(2+14)$ & 0 \\
-
-           (3,4) & $16-(16+0)$ & 0 \\
-
-           (4,5) & $19-(16+3)$ & 0 \\
-
-           (5,6) & $88-(19+14)$ & 55 \\
-           
-           (5,7) & $76-(19+7)$ & 48 \\
-           
-           (5,9) & $89-(19+70)$ & 0 \\
-           
-           (5,10) & $90-(19+1)$ & 70 \\
-
-           
-           (5,11) & $91-(19+7)$ & 65 \\
-
-           (6,9) & $89-(33+1)$ & 55 \\
-           
-           (7,8) & $88 - (26 + 14)$ & 48 \\
-           
-           (8,9) & $89-(40+1)$ & 48 \\
-           
-           (9,10) & $90-(89+1)$ & 0 \\
-           
-           (10,11) & $91 - (90 + 1)$ & 0 \\
-           
-           (11,12) & $92-(91+1)$ & 0 \\
-
-
-            \hline
-                                                     
-                        
-                                        
-        \end{tabular}
-    \end{center}
-\end{table}
-\end{center}
-
 \end{document}
