@@ -1,4 +1,3 @@
-% Définition du document
 \documentclass{article}
 
 % Paquets nécessaires
@@ -11,68 +10,467 @@
 \usepackage{color} % Pour les couleurs de texte
 \usepackage{mathrsfs} % Pour les lettres cursives en mathématiques
 \usepackage{blindtext}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{geometry}
+
 \usetikzlibrary{automata, positioning, arrows}
 % Configuration des bibliothèques TikZ
-\usetikzlibrary{positioning,quotes}
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.18}
 
 % Configuration de la page
-\usepackage[letterpaper,total={6in, 8in}]{geometry}
 
-% Informations sur le document
-\title{Devoir 2}
-\author{Emeric Laberge, Arpad Botond Rigo}
+
+\title{Devoir 3}
+\author{Emeric Laberge,Sara Haddad}
 \date{\today}
-
-% Début du document
 \begin{document}
-
-% Page de titre
 \begin{titlepage}
-\begin{center}
-\vspace*{1cm}
-
-\Huge
-\textbf{Devoir 3}
-
-\vspace{0.5cm}
-\LARGE
-
-\vspace{1.5cm}
-
-\textbf{Emeric Laberge}
-
-\vfill
-
-Dans le cadre du cours\\
-IFT 1575 
-
-
-\vspace{0.8cm}
-
-\includegraphics[width=0.4\textwidth]{Université-de-Montréal.jpg}
-
-\Large
-Département d'informatique et de recherche opérationnelle\\
-Université de Montréal\\
-Canada\\
-24 mars 2023 
-
-\end{center}
+   \begin{center}
+      \vspace*{1cm}
+                  
+      \Huge
+      \textbf{Devoir 3} 
+                  
+      \vspace{0.5cm}
+      \LARGE
+                  
+      \vspace{1.5cm}
+                  
+      \textbf{Emeric Laberge}\\ 20220275 \\ \textbf{Sara Haddad} \\ 20208373
+                  
+      \vfill
+                  
+      Dans le cadre du cours\\
+      IFT 1575
+      
+                  
+      \vspace{0.8cm}
+                  
+      \includegraphics[width=0.4\textwidth]{Université-de-Montréal.jpg}
+                   
+      \Large
+      Département d'informatique et de recherche opérationnelle\\
+      Université de Montréal\\
+      Canada\\
+      27 mars 2023
+                  
+    \end{center}
 \end{titlepage}
 
+\newgeometry{
+    top=3cm,
+    bottom=1.5cm,
+    left=6cm,
+    right=4cm,
+}
+\begin{landscape}
+% \begin{center}
+% \begin{table}[]
+%     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+%         \hline
+%         serveur & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     \\ \hline
+%         heures  & 17-21 & 13-19 & 16-19 & 18-22 & 19-23 & 13-17 & 18-23 & 17-23 & 13-21 \\ \hline
+%         salaire & 68\$  & 90\$  & 38\$  & 61\$  & 56\$  & 60\$  & 63\$  & 105\$ & 120\$ \\ \hline
+%     \end{tabular}
+% \end{table}
+% \end{center}
+   \begin{center}
+        \begin{tikzpicture}[node distance=1.3cm,auto]
+            \tikzset{label/.style={midway,font=\small}}
 
-\includegraphics[width=1 \textwidth]{num1} 
-\pagebreak
+            \node[state] (13h) {$13h$};
+            \node[state] (14h) [right = of 13h] {$14h$};
+            \node[state] (15h) [right = of 14h] {$15h$};
+            \node[state] (16h) [right = of 15h] {$16h$};
+            \node[state] (17h) [right = of 16h] {$17h$};
+            \node[state] (18h) [right = of 17h] {$18h$};
+            \node[state] (19h) [right = of 18h] {$19h$};
+            \node[state] (20h) [right = of 19h] {$20h$};
+            \node[state] (21h) [right = of 20h] {$21h$};
+            \node[state] (22h) [right = of 21h] {$22h$};
+            \node[state] (23h) [right = of 22h] {$23h$};
+
+            \node[left= 0.2cm of 13h] {\textbf{d=2}};
 
 
-\includegraphics[width=1 \textwidth]{num2} 
-\pagebreak
+            % \node[state,accepting] (q1) [above right=of q0] {$q_1$};
+            % \node[state,accepting] (q2) [below right=of q0] {$q_2$};
+            % \draw[->] (q5) edge [bend right] node {0} (q3);
+            % \draw[->] (q5) edge [loop above] node {1} ();
 
-\includegraphics[width=1 \textwidth]{num3}
-\subsection*{(a)} 
-\pagebreak
+            \draw[->,align=center] (13h) edge [bend left,out=60,in=120] node[above] {\textbf{90}} (19h);
+            \draw[->,align=center] (13h) edge [bend left,out=60,in=120] node[below] {(0,1)} (19h);
 
-\includegraphics[width=1 \textwidth]{num4} 
+
+            \draw[->,align=center] (13h) edge [bend left] node[above] {\textbf{50}} (17h);
+            \draw[->,align=center] (13h) edge [bend left] node[below] {(0,1)} (17h);
+
+            \draw[->,align=center] (13h) edge [bend right , in=240,out=300] node[above] {\textbf{120}} (21h);
+            \draw[->,align=center] (13h) edge [bend right , in=240,out=300] node[below] {(0,1)} (21h);
+
+            \draw[->,align=center] (16h) edge [bend right] node[above] {\textbf{38}}  (19h);
+            \draw[->,align=center] (16h) edge [bend right] node[below] {(0,1)} (19h);
+
+            \draw[->,align=center] (17h) edge [bend left,out=60,in=120 ] node[above] {\textbf{105}} (23h);
+            \draw[->,align=center] (17h) edge [bend left,out=60,in=120 ] node[below] {(0,1)} (23h);
+
+            \draw[->,align=center] (18h) edge [bend right] node[above] {\textbf{61}} (22h);
+            \draw[->,align=center] (18h) edge [bend right] node[below] {(0,1)} (22h);
+
+            \draw[->,align=center] (18h) edge [bend left,out=300,in=240] node[above] {\textbf{63}} (23h);
+            \draw[->,align=center] (18h) edge [bend left,out=300,in=240] node[below] {(0,1)} (23h);
+
+            \draw[->,align=center] (19h) edge [bend left] node {\textbf{56}} (23h);
+            \draw[->,align=center] (19h) edge [bend left] node[below] {(0,1)} (23h);
+
+
+
+
+
+            \draw[->] (14h) edge node[above] {\textbf{0}} (13h);
+            \draw[->] (14h) edge node[below] {(0,$\infty$)} (13h);
+
+            \draw[->] (15h) edge node[above] {\textbf{0}} (14h);
+            \draw[->] (15h) edge node[below] {(0,$\infty$)} (14h);
+
+            \draw[->] (16h) edge node[above] {\textbf{0}} (15h);
+            \draw[->] (16h) edge node[below] {(0,$\infty$)} (15h);
+
+            \draw[->] (17h) edge node[above] {\textbf{0}} (16h);
+            \draw[->] (17h) edge node[below] {(0,$\infty$)} (16h);
+
+            \draw[->] (18h) edge node[above] {\textbf{0} }(17h);
+            \draw[->] (18h) edge node[below] {(0,$\infty$)} (17h);
+
+            \draw[->] (19h) edge node[above] {\textbf{0}} (18h);
+            \draw[->] (19h) edge node[below] {(0,$\infty$)} (18h);
+
+            \draw[->] (20h) edge node[above] {\textbf{0}} (19h);
+            \draw[->] (20h) edge node[below] {(0,$\infty$)} (19h);
+
+            \draw[->] (21h) edge node[above] {\textbf{0}} (20h);
+            \draw[->] (21h) edge node[below]{(0,$\infty$)} (20h);
+
+            \draw[->] (22h) edge node[above] {\textbf{0}} (21h);
+            \draw[->] (22h) edge node[below] {(0,$\infty$)} (21h);  
+
+            \draw[->] (23h) edge node[above] {\textbf{0}} (22h);
+            \draw[->] (23h) edge node[below] {(0,$\infty$)} (22h);
+
+
+        \end{tikzpicture}
+    \end{center}
+\end{landscape}
+
+\restoregeometry
+
+\clearpage
+\section*{Question 2}
+\textbf{Initialisation:} \quad $EM=\{1\} \quad ; \quad  \delta_1=0$
+\subsection*{Itération 1:}
+\subsubsection*{Étape 1:}
+Les successeurs de $1$ sont $2$, $3$ et $4$.\\
+$\lambda_{12}=10 \quad \lambda_{13}=25 \quad \lambda_{14}=16$\\
+min $\{\lambda_{12},\lambda_{13},\lambda_{14}\} = $ min$\{10,25,16\}=10 \Rightarrow j_1 =2 $\\
+\subsubsection*{Étape 2:}
+On détermine le chemin le plus court menant de $1$ à $j_1$\\
+min $\{ \delta_1 + \lambda_{12}\} = $ min $\{0+10\}=10 $\\
+marquer $j_1=2$ avec $\delta_2=10$\\ 
+\subsubsection*{Étape 3:}
+$EM \leftarrow EM \cup \{j_1\}$ \quad avec $ \delta_{21} = \delta_1 + \lambda_{12} = 10$ \\
+$EM = \{1,2\}$\\
+\subsubsection*{Étape 4:}
+%make a bar above EM
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+
+\subsection*{Itération 2:}
+$EM = \{1,2\}$
+\subsubsection*{Étape 1:}
+On identifie le sommet adjacent non marqué situé le plus près de:
+\begin{enumerate}
+    \item min $\{\lambda_{13},\lambda_{14}\}=$ min $\{25,16\}=16\Rightarrow j_1=4$ \\
+    \item min $\{\lambda_{24},\lambda_{25}\}=$ min $\{5,22\}=5\Rightarrow j_2=4$ \\
+\end{enumerate}
+\subsubsection*{Étape 2:}
+min $\{ \delta_1 + \lambda_{14},\delta_2+\lambda_{24}\} = $ min $\{0+16,10+5\}=15 $\\
+marquer le sommet $j_2=4$ avec $\delta_4=15$\\ 
+\subsubsection*{Étape 3:}
+$EM=\{1,2,4\}$
+\subsubsection*{Étape 4:}
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+%make a bar above EM
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+
+
+\subsection*{Itération 3:}
+$EM = \{1,2,4\}$
+\subsubsection*{Étape 1:}
+On identifie les sommets adjacents non marqués situé les plus près de:
+\begin{enumerate}
+    \item min $\{\lambda_{13}\}=25 \: \Rightarrow j_1 =3$ \\
+    \item min $\{\lambda_{25}\}=22 \: \Rightarrow j_2 =5$ \\
+    \item min $\{\lambda_{43},\lambda_{45},\lambda_{46},\}=$ min $\{7,15,22\}=7 \: \Rightarrow j_4 =3$ \\
+\end{enumerate}
+\subsubsection*{Étape 2:}
+min $\{ \delta_1 + \lambda_{13}\: , \:\delta_4+\lambda_{43} \: ,\:\delta_2+\lambda_{25}\} = $ min $\{0+25 \:,\:15+7 \:,\:\}=22 $\\
+marquer le sommet $j_4=3$ avec $\delta_3=22$\\ 
+\subsubsection*{Étape 3:}
+$EM=\{1,2,4,3\}$
+\subsubsection*{Étape 4:}
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+
+\subsection*{Itération 4:}
+$EM = \{1,2,4,3\}$
+\subsubsection*{Étape 1:}
+On identifie les sommets adjacents non marqués situé les plus près de:
+\begin{enumerate}
+    \item min $\{\}=\infty$
+    \item min $\{22\}\: \Rightarrow j_2 = 5$ \\
+    \item min $\{22,15\}\: \Rightarrow j_4 =5$ \\
+    \item min $\{2\}\: \Rightarrow j_3 =6$ \\
+\end{enumerate}
+\subsubsection*{Étape 2:}
+min $\{ \infty \:,\: \delta_2 +\lambda_{25} \:,\: \delta_4 + \lambda_{45} \:,\: \delta_3 + \lambda_{36}\} = $ min $\{10+22\:,\:15+15\:,\:22+2\}=24$ \\
+marquer le sommet $j_3=6$ avec $\delta_4=24$\\ 
+\subsubsection*{Étape 3:}
+$EM=\{1,2,4,3,6\}$
+\subsubsection*{Étape 4:}
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+
+
+\subsection*{Itération 5:}
+$EM = \{1,2,4,3,6\}$
+\subsubsection*{Étape 1:}
+On identifie les sommets adjacents non marqués situé les plus près de:
+\begin{enumerate}
+    \item min $\{\}=\infty$
+    \item min $\{22\}\: \Rightarrow j_2 = 5$ \\
+    \item min $\{22,15\}\: \Rightarrow j_4 =5$ \\
+    \item min $\{\}=\infty$
+    \item min $\{5\}\: \Rightarrow j_6 = 7$ \\
+\end{enumerate}
+\subsubsection*{Étape 2:}
+min $\{ \infty \:,\: \delta_2 +\lambda_{25} \:,\: \delta_4 + \lambda_{45} \:,\: \infty \:,\: \delta_6 + \lambda_{67}\} = $ min $\{\infty \:,\: 10+22\:,\:15+15\:,\: \infty \:,\:24+5\}=29$\\
+marquer le sommet $j_6=7$ avec $\delta_7=29$ 
+\subsubsection*{Étape 3:}
+$EM=\{1,2,4,3,6,7\}$
+\subsubsection*{Étape 4:}
+$\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
+
+\subsection*{Itération 6:}
+$EM = \{1,2,4,3,6\}$
+\subsubsection*{Étape 1:}
+On identifie les sommets adjacents non marqués situé les plus près de:
+\begin{enumerate}
+    \item min $\{\}=\infty$
+    \item min $\{22\}\: \Rightarrow j_2 = 5$ \\
+    \item min $\{22,15\}\: \Rightarrow j_4 =5$ \\
+    \item min $\{\}=\infty$
+    \item min $\{\}=\infty$
+    \item min $\{\}=\infty$
+\end{enumerate}
+\subsubsection*{Étape 2:}
+min $\{ \infty \:,\: \delta_2 +\lambda_{25} \:,\: \delta_4 + \lambda_{45} \:,\: \infty \:,\:\infty \:,\:\infty \} = $ min $\{\infty \:,\: 10+22\:,\:15+15\:,\: \infty \:,\:\infty \:,\:\infty \:,\:\infty\}=30$\\
+marquer le sommet $j_4=5$ avec $\delta_5=30$ 
+\subsubsection*{Étape 3:}
+$EM=\{1,2,4,3,6,7,5\}$
+\subsubsection*{Étape 4:}
+$\overline{EM} = \emptyset $ , alors on arrête 
+
+\section*{Question 4}
+\begin{center}
+\begin{tikzpicture}[node distance=1.3cm,auto]
+    %center the state at the top ceanter of the page
+    \node[state] (1) {1};
+    \node[state] (2) [below= of 1] {2};
+    \node[state] (3) [below left = of 2] {3};
+    \node[state] (4) [below right = of 2] {4};
+    \node[state] (5) [below = of 4] {5};
+    \node[state] (6) [below = of 5] {6};
+    \node[state] (7) [right = of  5] {7};
+    \node[state] (8) [below = of  7] {8};
+    \node[state] (9) [below = of  8] {9};
+    \node[state] (10) [below = of  9] {10};
+    \node[state] (11) [below = of  10] {11};
+    \node[state] (12) [below = of  11] {12};
+
+    \draw[->] (1) edge node[left] {A} (2);
+    \draw[->] (1) edge node[right] {2} (2);
+
+    \draw[->] (2) edge node[left] {B} (3);
+    \draw[->] (2) edge node[right] {14} (3);
+
+    % 2 to 4
+    \draw[->] (2) edge node[left] {C} (4);
+    \draw[->] (2) edge node[right] {13} (4);
+
+    % 4 to 5
+    \draw[->] (4) edge node[left] {D} (5);
+    \draw[->] (4) edge node[right] {3} (5);
+
+    % 5 to 6
+    \draw[->] (5) edge node[left] {F} (6);
+    \draw[->] (5) edge node[right] {14} (6);
+
+    % 5 to 7
+    \draw[->] (5) edge node[above] {J} (7);
+    \draw[->] (5) edge node[below] {7} (7);
+
+    % 6 to 9 
+    \draw[->] (6) edge node[left] {G} (9);
+    \draw[->] (6) edge node[right] {11} (9);
+
+    % 5 to 9 
+    \draw[->] (5) edge node[left] {E} (9);
+    \draw[->] (5) edge node[right] {70} (9);
+
+    % 5 to 10 
+    \draw[->] (5) edge[bend right, out = 300 , in=240] node[left] {H} (10);
+    \draw[->] (5) edge[bend right, out = 300 , in=240] node[right] {10} (10);
+
+    % 5 to 11
+    \draw[->] (5) edge[bend right , out=270 , in=270] node[left] {I} (11);
+    \draw[->] (5) edge[bend right , out=270 , in=270] node[right] {7} (11);
+
+    % 7 to 8
+    \draw[->] (7) edge node[left] {K} (8);
+    \draw[->] (7) edge node[right] {14} (8);
+
+    % 8 to 9
+    \draw[->] (8) edge node[left] {L} (9);
+    \draw[->] (8) edge node[right] {1} (9);
+
+    % 9 to 10
+    \draw[->] (9) edge node[left] {M} (10);
+    \draw[->] (9) edge node[right] {1} (10);
+
+    % 10 to 11
+    \draw[->] (10) edge node[left] {N} (11);
+    \draw[->] (10) edge node[right] {1} (11);
+
+    % 11 to 12
+    \draw[->] (11) edge node[left] {O} (12);
+    \draw[->] (11) edge node[right] {1} (12);
+
+\end {tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{table}[]
+\caption{Temps le plus tard} \label{tab:Temps le plus tard}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Étape i & $j \in p_i$ & $LT_j-t_{ij}$ & $LT_i$ \\
+            \hline
+            12       & -           & -             & 92     \\
+            11       & 12          & 92-1          & 91     \\
+            10       & 11          & 91-1          & 90     \\
+            9        & 10          & 90-1          & 89     \\
+            8        & 9           & 89-1          & 88     \\
+            7        & 8           & 88-14         & 74     \\
+            6        & 9           & 89-1          & 88     \\
+            5        & 6           & 88-14         &        \\
+                     & 7           & 74-7          &        \\
+                     & 9           & 89-70         & 19     \\
+                     & 10          & 90-1          &        \\
+                     & 11          & 91-7          &        \\
+            
+            4        & 5           & 19-3          & 16     \\
+            3        & 4           & 16-0          & 16     \\
+            2        & 3           & 16-14         & 2      \\
+            2        & 4           & 16-14         &        \\
+            1        & 2           & 2-2           & 0      \\
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[]
+    \caption{Temps le plus tôt} \label{tab:Temps le plus tard}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Étape i & $j \in B_i$ & $ET_j+t_{ji}$ & $ET_i$ \\
+            \hline
+            1        & -           & -             & 0      \\
+            2        & 12          & 0+12          & 2      \\
+            3        & 11          & 2+14          & 16     \\
+            4        & 10          & 2+14          & 16     \\
+                     & 10          & 2+0           &        \\
+            5        & 8           & 16+3          & 19     \\
+            6        & 9           & 19+14         & 33     \\
+            7        & 6           & 19+7          & 26     \\
+            8        & 7           & 26 +14        & 40     \\
+            9        & 9           & 19+70         & 89     \\
+                     & 10          & 33+1          &        \\
+                     & 11          & 40+1          &        \\
+            10       & 5           & 19+1          & 90     \\
+                     & 4           & 89+1          &        \\
+            11       & 3           & 19+7          & 91     \\
+                     & 4           & 90+1          &        \\
+            12       & 2           & 91+1          & 92     \\
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[]
+    \caption{Écarts} \label{tab:Temps le plus tard}
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+           \hline
+           Tâches & $LT_j-(ET_i+t_{ij})$ & Écart \\
+           \hline 
+           (1,2) & $2-(0+2)$ & 0 \\
+
+           (2,3) & $16-(2+14)$ & 0 \\
+
+           (2,4) & $16-(2+14)$ & 0 \\
+
+           (3,4) & $16-(16+0)$ & 0 \\
+
+           (4,5) & $19-(16+3)$ & 0 \\
+
+           (5,6) & $88-(19+14)$ & 55 \\
+           
+           (5,7) & $76-(19+7)$ & 48 \\
+           
+           (5,9) & $89-(19+70)$ & 0 \\
+           
+           (5,10) & $90-(19+1)$ & 70 \\
+
+           
+           (5,11) & $91-(19+7)$ & 65 \\
+
+           (6,9) & $89-(33+1)$ & 55 \\
+           
+           (7,8) & $88 - (26 + 14)$ & 48 \\
+           
+           (8,9) & $89-(40+1)$ & 48 \\
+           
+           (9,10) & $90-(89+1)$ & 0 \\
+           
+           (10,11) & $91 - (90 + 1)$ & 0 \\
+           
+           (11,12) & $92-(91+1)$ & 0 \\
+
+
+            \hline
+                                                     
+                        
+                                        
+        \end{tabular}
+    \end{center}
+\end{table}
+\end{center}
+
 \end{document}
