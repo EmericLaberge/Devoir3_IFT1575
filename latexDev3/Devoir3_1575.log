@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.3.23)  26 MAR 2023 21:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.3.23)  26 MAR 2023 21:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -875,7 +875,12 @@ nc}]
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- [2
+
+Overfull \hbox (29.37299pt too wide) in paragraph at lines 171--172
+ [] 
+ []
+
+[2
 
 
 ]
@@ -1010,7 +1015,7 @@ sfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-su
 per/sfbx1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-supe
 r/sfrm1000.pfb>
-Output written on Devoir3_1575.pdf (16 pages, 230720 bytes).
+Output written on Devoir3_1575.pdf (16 pages, 230769 bytes).
 PDF statistics:
  141 PDF objects out of 1000 (max. 8388607)
  89 compressed objects within 1 object stream
