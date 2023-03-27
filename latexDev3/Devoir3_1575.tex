@@ -14,11 +14,13 @@
 \usepackage{adjustbox}
 \usepackage{geometry}
 \usepackage{xcolor}
+\usepackage{float} % here for H placement
 
 \usetikzlibrary{automata, positioning, arrows}
 % Configuration des bibliothèques TikZ
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.18}
+\definecolor{forestgreen}{RGB}{34, 139, 34}
 
 % Configuration de la page
 
@@ -60,6 +62,27 @@
     \end{center}
 \end{titlepage}
 
+\section*{Question 1:}
+
+\paragraph{Le propriétaire d’un restaurant a besoin de deux serveurs de 13h à 23h le jour de Noël. Le tableau plus bas présente les propositions de 9 serveurs en termes d’horaire de travail et de salaire demandé. Le propriétaire veut savoir quelles propositions doivent être retenues afin de minimiser ses coûts tout en disposant de deux serveurs exactement en tout temps. Il faut noter que le propriétaire peut engager un serveur pour un nombre d’heures moindre que ce qui est proposé, mais il devra quand même payer le salaire complet demandé par le serveur (par exemple, si le propriétaire engage le serveur 1 de 17h à 19h il devra quand même lui verser un salaire de 68\$). Définir un réseau permettant de représenter ce problème comme un problème de flot à coût minimal.}
+
+\begin{center}
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        serveur & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     \\ \hline
+        heures  & 17-21 & 13-19 & 16-19 & 18-22 & 19-23 & 13-17 & 18-23 & 17-23 & 13-21 \\ \hline
+        salaire & 68\$  & 90\$  & 38\$  & 61\$  & 56\$  & 60\$  & 63\$  & 105\$ & 120\$ \\ \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+\end{center}
+\begin{center}
+
+\Huge{Le réseau nécessite  une page complète et donc se trouve à la prochaine page}
+\end{center}
+
 \newgeometry{
     top=3cm,
     bottom=1.5cm,
@@ -67,18 +90,8 @@
     right=4cm,
 }
 \begin{landscape}
-% \begin{center}
-% \begin{table}[]
-%     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
-%         \hline
-%         serveur & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     \\ \hline
-%         heures  & 17-21 & 13-19 & 16-19 & 18-22 & 19-23 & 13-17 & 18-23 & 17-23 & 13-21 \\ \hline
-%         salaire & 68\$  & 90\$  & 38\$  & 61\$  & 56\$  & 60\$  & 63\$  & 105\$ & 120\$ \\ \hline
-%     \end{tabular}
-% \end{table}
-% \end{center}
    \begin{center}
-        \begin{tikzpicture}[node distance=1.3cm,auto]
+        \begin{tikzpicture}[node distance=1cm,auto]
             \tikzset{label/.style={midway,font=\small}}
 
             \node[state] (13h) {$13h$};
@@ -94,12 +107,6 @@
             \node[state] (23h) [right = of 22h] {$23h$};
 
             \node[left= 0.2cm of 13h] {\textbf{d=2}};
-
-
-            % \node[state,accepting] (q1) [above right=of q0] {$q_1$};
-            % \node[state,accepting] (q2) [below right=of q0] {$q_2$};
-            % \draw[->] (q5) edge [bend right] node {0} (q3);
-            % \draw[->] (q5) edge [loop above] node {1} ();
 
             \draw[->,align=center] (13h) edge [bend left,out=60,in=120] node[above] {\textbf{90}} (19h);
             \draw[->,align=center] (13h) edge [bend left,out=60,in=120] node[below] {(0,1)} (19h);
@@ -168,39 +175,8 @@
 \restoregeometry
 
 \clearpage
+
 \section*{Question 2}
-% \begin{center}
-%     \begin{tikzpicture}[auto]
-%         %\tikzset{label/.style={midway,font=\small}}
-%         \node[state] (1) {1};
-%         \node[state] (2) [above right = of 1] {2};
-
-%         \node[state] (3) [below right = of 1] {3};
-%         \node[state] (4) [below right = of 2] {4};
-%         \node[state] (5) [above right = of 4] {5};
-%         \node[state] (6) [below right = of 4] {6};
-%         \node[state] (7) [below right = of 5] {7};
-
-%         \draw[->] (1) edge node {\textbf{10}} (2);
-%         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
-%         \draw[->] (1) edge node {\textbf{16}} (4);
-
-%         \draw[->] (2) edge node {\textbf{5}} (4);
-%         \draw[->] (2) edge node {\textbf{22}} (5);
-
-%         \draw[->] (3) edge node[below] {\textbf{2}} (6);
-
-%         \draw[->] (4) edge node {\textbf{15}} (5);
-%         \draw[->] (4) edge node {\textbf{22}} (6);
-%         \draw[->] (4) edge node {\textbf{7}} (3);
-
-%         \draw[->] (5) edge node {\textbf{20}} (6);
-%         \draw[->] (5) edge node {\textbf{10}} (7);
-
-%         \draw[->] (6) edge node[below right] {\textbf{5}} (7);
-%     \end{tikzpicture}
-% \end{center}
-
 
 \textbf{Initialisation:} \quad $EM=\{1\} \quad ; \quad  \delta_1=0$
 \subsection*{Itération 1:}
@@ -221,10 +197,10 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
         \node[state] (3) [below right = of 1] {3};
         \node[state] (4) [below right = of 2] {4};
@@ -232,7 +208,7 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
         \node[state] (6) [below right = of 4] {6};
         \node[state] (7) [below right = of 5] {7};
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
@@ -274,24 +250,24 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
         \node[state] (3) [below right = of 1] {3};
-        \node[state,color=orange] (4) [below right = of 2] {4};
-        \node[above= 0.05 cm of 4] {\textbf{\textcolor{orange}{$\delta_4=15$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (4) [below right = of 2] {4};
+        \node[above= 0.05 cm of 4] {\textbf{\textcolor{forestgreen}{$\delta_4=15$}}};
         \node[state] (5) [above right = of 4] {5};
         \node[state] (6) [below right = of 4] {6};
         \node[state] (7) [below right = of 5] {7};
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
         \draw[->] (2) edge node {\textbf{22}} (5);
-        \draw[->,color=orange] (2) edge[color=orange] node[color=black] {\textbf{5}} (4);
+        \draw[->,color=forestgreen,line width=1.25pt] (2) edge[color=forestgreen] node[color=black] {\textbf{5}} (4);
 
         \draw[->] (3) edge node[below] {\textbf{2}} (6);
 
@@ -328,31 +304,31 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
-        \node[state,color=orange] (3) [below right = of 1] {3};
-        \node[below = 0.05 cm of 3] {\textbf{\textcolor{orange}{$\delta_3=22$}}};
-        \node[state,color=orange] (4) [below right = of 2] {4};
-        \node[above= 0.05 cm of 4] {\textbf{\textcolor{orange}{$\delta_4=15$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (3) [below right = of 1] {3};
+        \node[below = 0.05 cm of 3] {\textbf{\textcolor{forestgreen}{$\delta_3=22$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (4) [below right = of 2] {4};
+        \node[above= 0.05 cm of 4] {\textbf{\textcolor{forestgreen}{$\delta_4=15$}}};
         \node[state] (5) [above right = of 4] {5};
         \node[state] (6) [below right = of 4] {6};
         \node[state] (7) [below right = of 5] {7};
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
         \draw[->] (2) edge node {\textbf{22}} (5);
-        \draw[->,color=orange] (2) edge[color=orange] node[color=black] {\textbf{5}} (4);
+        \draw[->,color=forestgreen,line width=1.25pt] (2) edge[color=forestgreen] node[color=black] {\textbf{5}} (4);
 
         \draw[->] (3) edge node[below] {\textbf{2}} (6);
 
         \draw[->] (4) edge node {\textbf{15}} (5);
         \draw[->] (4) edge node {\textbf{22}} (6);
-        \draw[->,color=orange] (4) edge[color=orange] node[color=black] {\textbf{7}} (3);
+        \draw[->,color=forestgreen,line width=1.25pt] (4) edge[color=forestgreen] node[color=black] {\textbf{7}} (3);
 
         \draw[->] (5) edge node {\textbf{20}} (6);
         \draw[->] (5) edge node {\textbf{10}} (7);
@@ -385,32 +361,32 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
-        \node[state,color=orange] (3) [below right = of 1] {3};
-        \node[below = 0.05 cm of 3] {\textbf{\textcolor{orange}{$\delta_3=22$}}};
-        \node[state,color=orange] (4) [below right = of 2] {4};
-        \node[above= 0.05 cm of 4] {\textbf{\textcolor{orange}{$\delta_4=15$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (3) [below right = of 1] {3};
+        \node[below = 0.05 cm of 3] {\textbf{\textcolor{forestgreen}{$\delta_3=22$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (4) [below right = of 2] {4};
+        \node[above= 0.05 cm of 4] {\textbf{\textcolor{forestgreen}{$\delta_4=15$}}};
         \node[state] (5) [above right = of 4] {5};
-        \node[state,color=orange] (6) [below right = of 4] {6};
-        \node[below = 0.05 cm of 6] {\textbf{\textcolor{orange}{$\delta_6=24$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (6) [below right = of 4] {6};
+        \node[below = 0.05 cm of 6] {\textbf{\textcolor{forestgreen}{$\delta_6=24$}}};
         \node[state] (7) [below right = of 5] {7};
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
         \draw[->] (2) edge node {\textbf{22}} (5);
-        \draw[->,color=orange] (2) edge[color=orange] node[color=black] {\textbf{5}} (4);
+        \draw[->,color=forestgreen,line width=1.25pt] (2) edge[color=forestgreen] node[color=black] {\textbf{5}} (4);
 
-        \draw[->,color=orange] (3) edge[color=orange] node[color=black] {\textbf{2}} (6);
+        \draw[->,color=forestgreen,line width=1.25pt] (3) edge[color=forestgreen] node[color=black] {\textbf{2}} (6);
 
         \draw[->] (4) edge node {\textbf{15}} (5);
         \draw[->] (4) edge node {\textbf{22}} (6);
-        \draw[->,color=orange] (4) edge[color=orange] node[color=black] {\textbf{7}} (3);
+        \draw[->,color=forestgreen,line width=1.25pt] (4) edge[color=forestgreen] node[color=black] {\textbf{7}} (3);
 
         \draw[->] (5) edge node {\textbf{20}} (6);
         \draw[->] (5) edge node {\textbf{10}} (7);
@@ -440,39 +416,39 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
-        \node[state,color=orange] (3) [below right = of 1] {3};
-        \node[below = 0.05 cm of 3] {\textbf{\textcolor{orange}{$\delta_3=22$}}};
-        \node[state,color=orange] (4) [below right = of 2] {4};
-        \node[above= 0.05 cm of 4] {\textbf{\textcolor{orange}{$\delta_4=15$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (3) [below right = of 1] {3};
+        \node[below = 0.05 cm of 3] {\textbf{\textcolor{forestgreen}{$\delta_3=22$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (4) [below right = of 2] {4};
+        \node[above= 0.05 cm of 4] {\textbf{\textcolor{forestgreen}{$\delta_4=15$}}};
         \node[state] (5) [above right = of 4] {5};
-        \node[state,color=orange] (6) [below right = of 4] {6};
-        \node[below = 0.05 cm of 6] {\textbf{\textcolor{orange}{$\delta_6=24$}}};
-        \node[state,color=orange] (7) [below right = of 5] {7};
-        \node[right = 0.05 cm of 7] {\textbf{\textcolor{orange}{$\delta_7=29$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (6) [below right = of 4] {6};
+        \node[below = 0.05 cm of 6] {\textbf{\textcolor{forestgreen}{$\delta_6=24$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (7) [below right = of 5] {7};
+        \node[right = 0.05 cm of 7] {\textbf{\textcolor{forestgreen}{$\delta_7=29$}}};
 
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
         \draw[->] (2) edge node {\textbf{22}} (5);
-        \draw[->,color=orange] (2) edge[color=orange] node[color=black] {\textbf{5}} (4);
+        \draw[->,color=forestgreen,line width=1.25pt] (2) edge[color=forestgreen] node[color=black] {\textbf{5}} (4);
 
-        \draw[->,color=orange] (3) edge[color=orange] node[color=black] {\textbf{2}} (6);
+        \draw[->,color=forestgreen,line width=1.25pt] (3) edge[color=forestgreen] node[color=black] {\textbf{2}} (6);
 
         \draw[->] (4) edge node {\textbf{15}} (5);
         \draw[->] (4) edge node {\textbf{22}} (6);
-        \draw[->,color=orange] (4) edge[color=orange] node[color=black] {\textbf{7}} (3);
+        \draw[->,color=forestgreen,line width=1.25pt] (4) edge[color=forestgreen] node[color=black] {\textbf{7}} (3);
 
         \draw[->] (5) edge node {\textbf{20}} (6);
         \draw[->] (5) edge node {\textbf{10}} (7);
 
-        \draw[->,color=orange] (6) edge[color=orange] node[below right,color=black] {\textbf{5}} (7);
+        \draw[->,color=forestgreen,line width=1.25pt] (6) edge[color=forestgreen] node[below right,color=black] {\textbf{5}} (7);
 
 
     \end{tikzpicture}
@@ -486,7 +462,7 @@ On identifie les sommets adjacents non marqués situé les plus près de:
 \begin{itemize}
     \item \textbf{(1)} min $\{\}=\infty$
     \item \textbf{(2)} min $\{22\}\: \Rightarrow j_2 = 5$ 
-    \item \textbf{(4)} min $\{22,15\}\: \Rightarrow j_4 =5$ 
+    \item \textbf{(4)} min $\{15\}\: \Rightarrow j_4 =5$ 
     \item \textbf{(3)} min $\{\}= \infty$
     \item \textbf{(6)} min $\{\}= \infty$
     \item \textbf{(7)} min $\{\}= \infty$
@@ -502,41 +478,41 @@ $\overline{EM} = \emptyset $ , alors on arrête
 \begin{center}
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
-        \node[state,color=orange] (1) {1};
-        \node[above= 0.05 cm of 1] {\textbf{\textcolor{orange}{$\delta_1=0$}}};
-        \node[state,color=orange] (2) [above right = of 1] {2};
-        \node[above= 0.05 cm of 2] {\textbf{\textcolor{orange}{$\delta_2=10$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (1) {1};
+        \node[above= 0.05 cm of 1] {\textbf{\textcolor{forestgreen}{$\delta_1=0$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (2) [above right = of 1] {2};
+        \node[above= 0.05 cm of 2] {\textbf{\textcolor{forestgreen}{$\delta_2=10$}}};
 
-        \node[state,color=orange] (3) [below right = of 1] {3};
-        \node[below = 0.05 cm of 3] {\textbf{\textcolor{orange}{$\delta_3=22$}}};
-        \node[state,color=orange] (4) [below right = of 2] {4};
-        \node[above= 0.05 cm of 4] {\textbf{\textcolor{orange}{$\delta_4=15$}}};
-        \node[state,color=orange] (5) [above right = of 4] {5};
-        \node[above= 0.05 cm of 5] {\textbf{\textcolor{orange}{$\delta_5=30$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (3) [below right = of 1] {3};
+        \node[below = 0.05 cm of 3] {\textbf{\textcolor{forestgreen}{$\delta_3=22$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (4) [below right = of 2] {4};
+        \node[above= 0.05 cm of 4] {\textbf{\textcolor{forestgreen}{$\delta_4=15$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (5) [above right = of 4] {5};
+        \node[above= 0.05 cm of 5] {\textbf{\textcolor{forestgreen}{$\delta_5=30$}}};
 
-        \node[state,color=orange] (6) [below right = of 4] {6};
-        \node[below = 0.05 cm of 6] {\textbf{\textcolor{orange}{$\delta_6=24$}}};
-        \node[state,color=orange] (7) [below right = of 5] {7};
-        \node[right = 0.05 cm of 7] {\textbf{\textcolor{orange}{$\delta_7=29$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (6) [below right = of 4] {6};
+        \node[below = 0.05 cm of 6] {\textbf{\textcolor{forestgreen}{$\delta_6=24$}}};
+        \node[state,color=forestgreen,line width=1.25pt] (7) [below right = of 5] {7};
+        \node[right = 0.05 cm of 7] {\textbf{\textcolor{forestgreen}{$\delta_7=29$}}};
 
 
-        \draw[->,color=orange] (1) edge[color=orange] node[color=black] {\textbf{10}} (2);
+        \draw[->,color=forestgreen,line width=1.25pt] (1) edge[color=forestgreen] node[color=black] {\textbf{10}} (2);
         \draw[->] (1) edge node[below left] {\textbf{25}} (3);
         \draw[->] (1) edge node {\textbf{16}} (4);
 
         \draw[->] (2) edge node {\textbf{22}} (5);
-        \draw[->,color=orange] (2) edge[color=orange] node[color=black] {\textbf{5}} (4);
+        \draw[->,color=forestgreen,line width=1.25pt] (2) edge[color=forestgreen] node[color=black] {\textbf{5}} (4);
 
-        \draw[->,color=orange] (3) edge[color=orange] node[color=black] {\textbf{2}} (6);
+        \draw[->,color=forestgreen,line width=1.25pt] (3) edge[color=forestgreen] node[color=black] {\textbf{2}} (6);
 
-        \draw[->,color=orange] (4) edge[color=orange] node[color=black] {\textbf{15}} (5);
+        \draw[->,color=forestgreen,line width=1.25pt] (4) edge[color=forestgreen] node[color=black] {\textbf{15}} (5);
         \draw[->] (4) edge node {\textbf{22}} (6);
-        \draw[->,color=orange] (4) edge[color=orange] node[color=black] {\textbf{7}} (3);
+        \draw[->,color=forestgreen,line width=1.25pt] (4) edge[color=forestgreen] node[color=black] {\textbf{7}} (3);
 
         \draw[->] (5) edge node {\textbf{20}} (6);
         \draw[->] (5) edge node {\textbf{10}} (7);
 
-        \draw[->,color=orange] (6) edge[color=orange] node[below right,color=black] {\textbf{5}} (7);
+        \draw[->,color=forestgreen,line width=1.25pt] (6) edge[color=forestgreen] node[below right,color=black] {\textbf{5}} (7);
 
 
     \end{tikzpicture}
@@ -672,7 +648,7 @@ $$\pi=\begin{pmatrix}
 
 
 \section*{Question 4}
-\begin{table}
+\begin{table}[H]
 \caption{Temps le plus tard} \label{tab:Temps le plus tard}
     \begin{center}
         \begin{tabular}{|c|c|c|c|}
@@ -705,7 +681,7 @@ $$\pi=\begin{pmatrix}
         \end{center}
 \end{table}
 
-\begin{table}
+\begin{table}[H]
     \caption{Temps le plus tôt} \label{tab:Temps le plus tot}
     \begin{center}
         \begin{tabular}{|c|c|c|c|}
@@ -737,7 +713,7 @@ $$\pi=\begin{pmatrix}
     \end{center}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
     \caption{Écarts} \label{tab:ecarts}
     \begin{center}
         \begin{tabular}{|c|c|c|}
@@ -801,23 +777,24 @@ $$\pi=\begin{pmatrix}
     \node[state] (11) [below = of  10] {11};
     \node[state] (12) [below = of  11] {12};
 
-    \draw[->,color=red] (1) edge[color=red] node[left,color=black] {A} (2);
-    \draw[->,color=red] (1) edge[color=red] node[right,color=black] {2} (2);
+    \draw[->,color=red,line width=1.25pt] (1) edge[color=red] node[left,color=black] {A} (2);
+    \draw[->,color=red,line width=1.25pt] (1) edge[color=red] node[right,color=black] {2} (2);
 
     \draw[->] (2) edge node[left] {B} (3);
     \draw[->] (2) edge node[right] {14} (3);
 
     % 2 to 4
-    \draw[->,color=red] (2) edge[color=red] node[left,color=black] {C} (4);
-    \draw[->,color=red] (2) edge[color=red] node[right,color=black] {14} (4);
+    \draw[->,color=red,line width=1.25pt] (2) edge[color=red] node[left,color=black] {C} (4);
+    \draw[->,color=red,line width=1.25pt] (2) edge[color=red] node[right,color=black] {14} (4);
 
     % 3 to 4 dashed 
     \draw[->,dashed] (3) edge node[left] {} (4);
+    
     \draw[->,dashed] (3) edge node[right] {} (4);
 
     % 4 to 5 red
-    \draw[->,color=red] (4) edge[color=red] node[left,color=black] {D} (5);
-    \draw[->,color=red] (4) edge[color=red] node[right,color=black] {3} (5);
+    \draw[->,color=red,line width=1.25pt] (4) edge[color=red] node[left,color=black] {D} (5);
+    \draw[->,color=red,line width=1.25pt] (4) edge[color=red] node[right,color=black] {3} (5);
 
     % 5 to 6
     \draw[->] (5) edge node[left] {F} (6);
@@ -832,8 +809,8 @@ $$\pi=\begin{pmatrix}
     \draw[->] (6) edge node[right] {1} (9);
 
     % 5 to 9 red
-    \draw[->,color=red] (5) edge[color=red] node[left,color=black] {E} (9);
-    \draw[->,color=red] (5) edge[color=red] node[right,color=black] {70} (9);
+    \draw[->,color=red,line width=1.25pt] (5) edge[color=red] node[left,color=black] {E} (9);
+    \draw[->,color=red,line width=1.25pt] (5) edge[color=red] node[right,color=black] {70} (9);
 
     % 5 to 10 
     \draw[->] (5) edge[bend right, out = 300 , in=240] node[left] {H} (10);
@@ -852,17 +829,19 @@ $$\pi=\begin{pmatrix}
     \draw[->] (8) edge node[right] {1} (9);
 
     % 9 to 10 red
-    \draw[->,color=red] (9) edge[color=red] node[left,color=black] {M} (10);
-    \draw[->,color=red] (9) edge[color=red] node[right,color=black] {1} (10);
+    \draw[->,color=red,line width=1.25pt] (9) edge[color=red] node[left,color=black] {M} (10);
+    \draw[->,color=red,line width=1.25pt] (9) edge[color=red] node[right,color=black] {1} (10);
 
     % 10 to 11 red
-    \draw[->,color=red] (10) edge[color=red] node[left,color=black] {N} (11);
-    \draw[->,color=red] (10) edge[color=red] node[right,color=black] {1} (11);
+    \draw[->,color=red,line width=1.25pt] (10) edge[color=red] node[left,color=black] {N} (11);
+    \draw[->,color=red,line width=1.25pt] (10) edge[color=red] node[right,color=black] {1} (11);
 
     % 11 to 12 red
-    \draw[->,color=red] (11) edge[color=red] node[left,color=black] {O} (12);
-    \draw[->,color=red] (11) edge[color=red] node[right,color=black] {1} (12);
+    \draw[->,color=red,line width=1.25pt] (11) edge[color=red] node[left,color=black] {O} (12);
+    \draw[->,color=red,line width=1.25pt] (11) edge[color=red] node[right,color=black] {1} (12);
 \end {tikzpicture}
+\\
+Durée $= 2+14+3+70+1+1+1=\textbf{92}$
 \end{center}
 
 \begin{center}
@@ -881,23 +860,23 @@ $$\pi=\begin{pmatrix}
     \node[state] (11) [below = of  10] {11};
     \node[state] (12) [below = of  11] {12};
 
-    \draw[->,color=blue] (1) edge[color=blue] node[left,color=black] {A} (2);
-    \draw[->,color=blue] (1) edge[color=blue] node[right,color=black] {2} (2);
+    \draw[->,color=blue,line width=1.25pt] (1) edge[color=blue] node[left,color=black] {A} (2);
+    \draw[->,color=blue,line width=1.25pt] (1) edge[color=blue] node[right,color=black] {2} (2);
 
     % 2 to 3 color blue
-    \draw[->,color=blue] (2) edge[color=blue] node[left,color=black] {B} (3);
-    \draw[->,color=blue] (2) edge[color=blue] node[right,color=black] {14} (3);
+    \draw[->,color=blue,line width=1.25pt] (2) edge[color=blue] node[left,color=black] {B} (3);
+    \draw[->,color=blue,line width=1.25pt] (2) edge[color=blue] node[right,color=black] {14} (3);
 
     % 2 to 4
     \draw[->] (2) edge node[left,color=black] {C} (4);
     \draw[->] (2) edge node[right,color=black] {14} (4);
 
     % 3 to 4 dashed blue
-    \draw[->,dashed,color=blue] (3) edge[color=blue] node[left,color=blue] {} (4);
+    \draw[->,dashed,color=blue,line width=1.25pt] (3) edge[color=blue] node[left,color=blue] {} (4);
 
     % 4 to 5 blue
-    \draw[->,color=blue] (4) edge[color=blue] node[left,color=black] {D} (5);
-    \draw[->,color=blue] (4) edge[color=blue] node[right,color=black] {3} (5);
+    \draw[->,color=blue,line width=1.25pt] (4) edge[color=blue] node[left,color=black] {D} (5);
+    \draw[->,color=blue,line width=1.25pt] (4) edge[color=blue] node[right,color=black] {3} (5);
 
     % 5 to 6
     \draw[->] (5) edge node[left] {F} (6);
@@ -912,8 +891,8 @@ $$\pi=\begin{pmatrix}
     \draw[->] (6) edge node[right] {1} (9);
 
     % 5 to 9 blue
-    \draw[->,color=blue] (5) edge[color=blue] node[left,color=black] {E} (9);
-    \draw[->,color=blue] (5) edge[color=blue] node[right,color=black] {70} (9);
+    \draw[->,color=blue,line width=1.25pt] (5) edge[color=blue] node[left,color=black] {E} (9);
+    \draw[->,color=blue,line width=1.25pt] (5) edge[color=blue] node[right,color=black] {70} (9);
 
     % 5 to 10 
     \draw[->] (5) edge[bend right, out = 300 , in=240] node[left] {H} (10);
@@ -932,16 +911,18 @@ $$\pi=\begin{pmatrix}
     \draw[->] (8) edge node[right] {1} (9);
 
     % 9 to 10 blue
-    \draw[->,color=blue] (9) edge[color=blue] node[left,color=black] {M} (10);
-    \draw[->,color=blue] (9) edge[color=blue] node[right,color=black] {1} (10);
+    \draw[->,color=blue,line width=1.25pt] (9) edge[color=blue] node[left,color=black] {M} (10);
+    \draw[->,color=blue,line width=1.25pt] (9) edge[color=blue] node[right,color=black] {1} (10);
 
     % 10 to 11 blue
-    \draw[->,color=blue] (10) edge[color=blue] node[left,color=black] {N} (11);
-    \draw[->,color=blue] (10) edge[color=blue] node[right,color=black] {1} (11);
+    \draw[->,color=blue,line width=1.25pt] (10) edge[color=blue] node[left,color=black] {N} (11);
+    \draw[->,color=blue,line width=1.25pt] (10) edge[color=blue] node[right,color=black] {1} (11);
 
     % 11 to 12 blue
-    \draw[->,color=blue] (11) edge[color=blue] node[left,color=black] {O} (12);
-    \draw[->,color=blue] (11) edge[color=blue] node[right,color=black] {1} (12);
+    \draw[->,color=blue,line width=1.25pt] (11) edge[color=blue] node[left,color=black] {O} (12);
+    \draw[->,color=blue,line width=1.25pt] (11) edge[color=blue] node[right,color=black] {1} (12);
 \end {tikzpicture}
+\\
+Durée $= 2+14+3+70+1+1+1=\textbf{92}$
 \end{center}
 \end{document}
