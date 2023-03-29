@@ -78,8 +78,9 @@
     \end{center}
 \end{table}
 \end{center}
-\begin{center}
+Notre réseau comporte comme noeuds les différentes heures allant de 13 à 23, avec comme arcs les tranches d'heures durant lesquelles un serveur donné travaille (exemple: l'arc allant du noeud 13 au noeud 17 illustre le fait que le serveur 6 travaille de 13h a 17h). De plus, les arcs qui reviennent en arrière modélisent la possibilité d'engager un serveur à mi-chemin, c'est à dire qu'un serveur peut etre engagé pour un nombre d'heures moindres que ce qui est proposé, donc le restaurateur peut décider d'en engager un autre avant l'heure de fin de ce serveur.
 
+\begin{center}
 \Huge{Le réseau nécessite  une page complète et donc se trouve à la prochaine page}
 \end{center}
 
@@ -112,7 +113,7 @@
             \draw[->,align=center] (13h) edge [bend left,out=60,in=120] node[below] {(0,1)} (19h);
 
 
-            \draw[->,align=center] (13h) edge [bend left] node[above] {\textbf{50}} (17h);
+            \draw[->,align=center] (13h) edge [bend left] node[above] {\textbf{60}} (17h);
             \draw[->,align=center] (13h) edge [bend left] node[below] {(0,1)} (17h);
 
             \draw[->,align=center] (13h) edge [bend right , in=240,out=300] node[above] {\textbf{120}} (21h);
@@ -167,6 +168,10 @@
             \draw[->] (23h) edge node[above] {\textbf{0}} (22h);
             \draw[->] (23h) edge node[below] {(0,$\infty$)} (22h);
 
+
+
+            \draw[->,align=center] (17h) edge [bend left] node {\textbf{68}} (21h);
+            \draw[->,align=center] (17h) edge [bend left] node[below] {(0,1)} (21h);
 
         \end{tikzpicture}
     \end{center}
@@ -281,8 +286,6 @@ $\overline{EM} \neq \emptyset $ , alors on effectue un autre itération
         \draw[->] (6) edge node[below right] {\textbf{5}} (7);
     \end{tikzpicture}
 \end{center}
-
-\pagebreak 
 
 \subsection*{Itération 3:}
 $EM = \{1,2,4\}$
@@ -476,6 +479,8 @@ $EM=\{1,2,4,3,6,7,5\}$
 $\overline{EM} = \emptyset $ , alors on arrête 
 
 \begin{center}
+
+
     \begin{tikzpicture}[node distance = 2 cm , auto]
         %\tikzset{label/.style={midway,font=\small}}
         \node[state,color=forestgreen,line width=1.25pt] (1) {1};

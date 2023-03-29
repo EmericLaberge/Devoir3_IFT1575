@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1679881658 "Devoir3_1575.tex" "Devoir3_1575.pdf" "Devoir3_1575" 1679881660 0
+["pdflatex"] 1680048431 "Devoir3_1575.tex" "Devoir3_1575.pdf" "Devoir3_1575" 1680048432 0
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcbx1000.tfm" 1136768653 1536 30fde759286ded71559881bfa2623939 ""
@@ -212,8 +212,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1679620754 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1679620677 7883454 d14ebc7311436c14d65f0086be2b1596 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Devoir3_1575.aux" 1679881659 1405 1e7ccd56e2f6b6d9f5f291839c9adf8a "pdflatex"
-  "Devoir3_1575.tex" 1679881656 38200 7a44eb3d74f83eb3d11a8ceeec060084 ""
+  "Devoir3_1575.aux" 1680048432 1405 1e7ccd56e2f6b6d9f5f291839c9adf8a "pdflatex"
+  "Devoir3_1575.tex" 1680048430 38935 0a352b2ffc41ddce96318215c23118dc ""
   "Université-de-Montréal.jpg" 1675912292 12822 c61fcee9d9624c7f957421ef99be2803 ""
   (generated)
   "Devoir3_1575.aux"
